@@ -59,6 +59,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Initialize session state for simulation results
+if 'latest_simulation' not in st.session_state:
+    st.session_state.latest_simulation = None
+
 # Sidebar navigation
 with st.sidebar:
     st.title("📊 SG Capital")
@@ -259,7 +263,23 @@ elif page == "Monte Carlo Simulator":
                 percentiles = [1, 5, 10, 25, 50, 75, 90, 95, 99]
                 percentile_values = np.percentile(final_values, percentiles)
                 
-                st.success("✅ Simulation completed!")
+                # Save results to CSV for Percentile Analysis module to read
+                results_df = pd.DataFrame({
+                    'Percentile': [f"{p}%" for p in percentiles],
+                    'Value': percentile_values
+                })
+                results_df.to_csv('sg_capital_2026_5M_percentiles.csv', index=False)
+                
+                # Store in session state for immediate access
+                st.session_state.latest_simulation = {
+                    'percentiles': percentiles,
+                    'percentile_values': percentile_values,
+                    'final_values': final_values,
+                    'annual_returns': annual_returns,
+                    'results_df': results_df
+                }
+                
+                st.success("✅ Simulation completed! Results saved.")
                 
                 col1, col2, col3 = st.columns(3)
                 with col1:
@@ -327,9 +347,19 @@ elif page == "Percentile Analysis":
         data_dir = Path(__file__).parent
         percentiles_file = data_dir / "sg_capital_2026_5M_percentiles.csv"
         
-        if percentiles_file.exists():
+        # Check if there's a new simulation in session state, otherwise read CSV
+        if 'latest_simulation' in st.session_state and st.session_state.latest_simulation:
+            df = st.session_state.latest_simulation['results_df']
+            st.info("📊 Showing results from latest simulation")
+            st.write("(Run Monte Carlo Simulator to update these results)")
+        elif percentiles_file.exists():
             df = pd.read_csv(percentiles_file)
-            
+            st.info("📊 Showing results from saved percentile file")
+        else:
+            st.warning("No percentile data available. Run Monte Carlo Simulator first.")
+            df = None
+        
+        if df is not None:
             col1, col2 = st.columns([2, 1])
             
             with col1:
