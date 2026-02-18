@@ -1,0 +1,12 @@
+Metric,Value,Interpretation
+Initial Portfolio Value,"R1,000,000",Starting capital
+Median Return,33.05%,Most likely outcome
+Median Final Value,"R1,330,458",Expected ending value
+Probability of Profit,80.3%,Chance of positive return
+Probability of Loss,19.7%,Chance of negative return
+VaR (95%),-21.88%,Worst 5% threshold
+VaR (99%),-37.03%,Worst 1% threshold
+Best Case,193.88%,99th percentile
+Worst Case,-37.03%,1st percentile
+Range,230.9 ppts,Total spread
+IQR,59.8 ppts,25th to 75th percentile

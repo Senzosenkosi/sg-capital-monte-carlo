@@ -1,0 +1,137 @@
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                   TRADING RECOMMENDATIONS                            ║
+║              Based on Monte Carlo Percentile Analysis                ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Generated: 2026-02-18 18:35:26
+Initial Portfolio: R1,000,000
+Median Expected: R1,330,458 (33.0%)
+
+═══════════════════════════════════════════════════════════════════════
+
+📊 IMMEDIATE ACTIONS
+
+1. SET STOP LOSSES
+   └─ Portfolio-level: -21.9% (VaR 95%)
+   └─ Individual stocks: -10% to -15%
+   └─ Emergency exit: -37.0%
+
+2. ESTABLISH PROFIT-TAKING RULES
+   └─ At median (+33%): Sell 20%
+   └─ At 75th percentile (+67%): Sell 40%
+   └─ At 90th percentile (+105%): Sell 60%
+   └─ Above 95th percentile: Sell aggressively
+
+3. MAINTAIN CASH BUFFER
+   └─ Keep 10-15% in cash for drawdowns
+   └─ With 19.7% loss probability, liquidity is crucial
+
+═══════════════════════════════════════════════════════════════════════
+
+💰 POSITION SIZING RECOMMENDATIONS
+
+Current Risk Level: LOW
+
+With 19.7% probability of loss:
+└─ Maximum position size per stock: 15%
+└─ Reduce high-volatility assets (>35% annual vol)
+└─ Increase low-volatility assets (<20% annual vol)
+└─ Consider adding bonds/cash for balance
+
+═══════════════════════════════════════════════════════════════════════
+
+📈 IF YOUR YTD RETURN IS...
+
+Below -22% (5th percentile):
+   🚨 EMERGENCY - Reassess entire strategy
+   └─ Something is fundamentally wrong
+   └─ Consider cutting losses
+   └─ Seek external review
+
+Between -22% and 0%:
+   ⚠️ BAD YEAR - But statistically normal
+   └─ Stay the course, don't panic
+   └─ Review positions but don't overreact
+   └─ Consider averaging down on quality names
+
+Between 0% and 33% (median):
+   👍 BELOW TARGET - But still profitable
+   └─ On track for positive year
+   └─ Let strategies play out
+   └─ Patience required
+
+Between 33% and 67%:
+   🎯 MEETING/BEATING TARGET
+   └─ Good performance
+   └─ Start scaling out of winners
+   └─ Take some chips off table
+
+Above 67% (75th percentile):
+   🎉 EXCEPTIONAL YEAR
+   └─ Top quartile performance
+   └─ Aggressively take profits
+   └─ Don't get greedy - this is rare
+
+Above 105% (90th percentile):
+   🚀 LIGHTNING IN A BOTTLE
+   └─ Sell 60-80% of portfolio
+   └─ This won't repeat
+   └─ Lock in generational gains
+
+═══════════════════════════════════════════════════════════════════════
+
+⚙️ REBALANCING SCHEDULE
+
+MONTHLY (1st business day):
+□ Check if any position >15% of portfolio → trim to 12%
+□ Review cash position → maintain 10-15%
+□ Check drawdown from peak → if >15%, review strategy
+
+QUARTERLY (End of quarter):
+□ Full rebalancing to target weights
+□ Review correlation changes
+□ Update return expectations
+□ Assess new opportunities
+
+ANNUALLY (Year-end):
+□ Complete strategic review
+□ Reassess risk tolerance
+□ Update Monte Carlo assumptions
+□ Plan next year's strategy
+
+═══════════════════════════════════════════════════════════════════════
+
+⚠️ CRITICAL WARNINGS
+
+DO NOT:
+❌ Count on achieving 95th percentile (132%)
+❌ Ignore the 19.7% probability of loss
+❌ Add leverage when things are going well
+❌ Panic sell during normal corrections (<7%)
+❌ Get greedy after hitting median target
+
+DO:
+✅ Plan around median outcome (33.0%)
+✅ Respect stop losses (VaR 95% = -21.9%)
+✅ Take progressive profits above 75th percentile
+✅ Maintain cash buffer for drawdowns
+✅ Rebalance quarterly without emotion
+
+═══════════════════════════════════════════════════════════════════════
+
+🎯 SUCCESS METRICS
+
+MINIMUM ACCEPTABLE: Avoid 5th percentile (-21.9%)
+TARGET: Achieve median (33.0%)
+STRETCH: Reach 75th percentile (67%)
+EXCEPTIONAL: Exceed 90th percentile (105%)
+
+═══════════════════════════════════════════════════════════════════════
+
+Remember: These percentiles map probability, not certainty.
+Your actual outcome will be ONE path from 5 million possibilities.
+
+Trade smart. Stay humble. Manage risk.
+
+═══════════════════════════════════════════════════════════════════════

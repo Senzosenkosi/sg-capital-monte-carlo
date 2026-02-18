@@ -1,0 +1,110 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+envs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Streamlit
+.streamlit/
+.streamlit/secrets.toml
+
+# Testing
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large data files (optional - uncomment to exclude)
+# *.csv
+# *.xlsx
+# *.xls
+
+# Output files (optional - uncomment if you want to exclude)
+# *.png
+# *.jpg
+# *.jpeg
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Secrets
+secrets.json
+config.json
+credentials.json
+
+# Node (if using any JS tools)
+node_modules/
+npm-debug.log
+
+# Miscellaneous
+.cache/
+*.pickle
+*.pkl
+.hypothesis/
+.pytest_cache/
