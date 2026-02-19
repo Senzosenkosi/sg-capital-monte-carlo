@@ -16,6 +16,41 @@ import os
 import sys
 from pathlib import Path
 
+# ============================================================================
+# CACHING FUNCTIONS - These prevent re-execution and reduce memory usage
+# ============================================================================
+
+@st.cache_data(ttl=3600)  # Cache for 1 hour, or until file changes
+def load_csv_file(filename):
+    """Load CSV file once and cache it"""
+    try:
+        data_dir = Path(__file__).parent
+        file_path = data_dir / filename
+        if file_path.exists():
+            return pd.read_csv(file_path)
+    except Exception as e:
+        st.warning(f"Error loading {filename}: {str(e)}")
+    return None
+
+@st.cache_data(ttl=3600)
+def get_csv_files():
+    """Get list of available CSV files"""
+    data_dir = Path(__file__).parent
+    return sorted(list(data_dir.glob("*.csv")))
+
+@st.cache_data
+def load_markdown_file(filename):
+    """Load and cache markdown files"""
+    try:
+        data_dir = Path(__file__).parent
+        file_path = data_dir / filename
+        if file_path.exists():
+            with open(file_path, 'r', encoding='utf-8') as f:
+                return f.read()
+    except Exception as e:
+        st.warning(f"Error loading {filename}: {str(e)}")
+    return None
+
 # Set page config
 st.set_page_config(
     page_title="SG Capital - Monte Carlo Analyzer",
@@ -23,6 +58,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Enable optimizations
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # Custom CSS
 st.markdown("""
@@ -92,7 +130,7 @@ with st.sidebar:
     data_dir = Path(__file__).parent
     st.markdown("### Data Files")
     
-    csv_files = list(data_dir.glob("*.csv"))
+    csv_files = get_csv_files()  # Use cached function
     if csv_files:
         st.markdown("**Available CSV Files:**")
         for f in csv_files:
@@ -158,11 +196,10 @@ if page == "Dashboard":
     st.subheader("📊 Recent Data")
     
     try:
-        data_dir = Path(__file__).parent
-        percentiles_file = data_dir / "sg_capital_2026_5M_percentiles.csv"
+        # Use cached function to load percentile data
+        df = load_csv_file("sg_capital_2026_5M_percentiles.csv")
         
-        if percentiles_file.exists():
-            df = pd.read_csv(percentiles_file)
+        if df is not None:
             st.dataframe(df.head(10), use_container_width=True)
         else:
             st.info("No percentile data available yet")
@@ -270,13 +307,18 @@ elif page == "Monte Carlo Simulator":
                 })
                 results_df.to_csv('sg_capital_2026_5M_percentiles.csv', index=False)
                 
-                # Store in session state for immediate access
+                # Store ONLY essential results in session state (not huge arrays)
+                # This prevents excessive memory usage
                 st.session_state.latest_simulation = {
                     'percentiles': percentiles,
-                    'percentile_values': percentile_values,
-                    'final_values': final_values,
-                    'annual_returns': annual_returns,
+                    'percentile_values': percentile_values.tolist(),  # Convert to list to save memory
+                    'mean_value': float(np.mean(final_values)),
+                    'median_value': float(np.median(final_values)),
+                    'std_value': float(np.std(final_values)),
+                    'min_value': float(np.min(final_values)),
+                    'max_value': float(np.max(final_values)),
                     'results_df': results_df
+                    # NOTE: Not storing final_values and annual_returns arrays to save RAM!
                 }
                 
                 st.success("✅ Simulation completed! Results saved.")
@@ -299,7 +341,7 @@ elif page == "Monte Carlo Simulator":
                 })
                 st.dataframe(percentile_df, use_container_width=True)
                 
-                # Visualization
+                # Visualization - use final_values for plotting only (local var, not stored)
                 fig, axes = plt.subplots(2, 2, figsize=(12, 8))
                 
                 # Distribution plot
@@ -344,20 +386,18 @@ elif page == "Percentile Analysis":
     st.markdown('<p class="header-title">📊 Percentile Analysis</p>', unsafe_allow_html=True)
     
     try:
-        data_dir = Path(__file__).parent
-        percentiles_file = data_dir / "sg_capital_2026_5M_percentiles.csv"
-        
-        # Check if there's a new simulation in session state, otherwise read CSV
+        # Check if there's a new simulation in session state, otherwise read cached CSV
         if 'latest_simulation' in st.session_state and st.session_state.latest_simulation:
             df = st.session_state.latest_simulation['results_df']
             st.info("📊 Showing results from latest simulation")
             st.write("(Run Monte Carlo Simulator to update these results)")
-        elif percentiles_file.exists():
-            df = pd.read_csv(percentiles_file)
-            st.info("📊 Showing results from saved percentile file")
         else:
-            st.warning("No percentile data available. Run Monte Carlo Simulator first.")
-            df = None
+            # Use cached function to load percentile data
+            df = load_csv_file("sg_capital_2026_5M_percentiles.csv")
+            if df is not None:
+                st.info("📊 Showing results from saved percentile file")
+            else:
+                st.warning("No percentile data available. Run Monte Carlo Simulator first.")
         
         if df is not None:
             col1, col2 = st.columns([2, 1])
@@ -408,10 +448,8 @@ elif page == "Percentile Analysis":
             
             with col1:
                 if st.button("📄 View Markdown Report", use_container_width=True):
-                    report_file = data_dir / "PERCENTILE_REPORT.md"
-                    if report_file.exists():
-                        with open(report_file, 'r', encoding='utf-8') as f:
-                            report_content = f.read()
+                    report_content = load_markdown_file("PERCENTILE_REPORT.md")
+                    if report_content:
                         st.markdown(report_content)
                     else:
                         st.warning("Report not generated yet")
@@ -493,15 +531,12 @@ elif page == "Factor Risk Analysis":
         factor_df = pd.DataFrame(factor_data)
         st.dataframe(factor_df, use_container_width=True)
         
-        try:
-            guide_file = Path(__file__).parent / "FACTOR_RISK_GUIDE.md"
-            if guide_file.exists():
-                with open(guide_file, 'r', encoding='utf-8') as f:
-                    guide_content = f.read()
-                st.markdown("---")
-                st.markdown(guide_content)
-        except Exception as e:
-            st.warning("Factor risk guide not available")
+        guide_content = load_markdown_file("FACTOR_RISK_GUIDE.md")
+        if guide_content:
+            st.markdown("---")
+            st.markdown(guide_content)
+        else:
+            st.info("Factor risk guide not available")
 
 
 elif page == "Data Management":
@@ -512,23 +547,23 @@ elif page == "Data Management":
     with tab1:
         st.subheader("Project Files")
         
-        data_dir = Path(__file__).parent
-        
         col1, col2 = st.columns(2)
         
         with col1:
             st.markdown("**CSV Files:**")
-            csv_files = list(data_dir.glob("*.csv"))
+            csv_files = get_csv_files()  # Use cached function
             for f in csv_files:
                 try:
-                    df = pd.read_csv(f)
-                    st.caption(f"✓ {f.name} ({len(df)} rows, {len(df.columns)} cols)")
+                    df = load_csv_file(f.name)  # Use cached loading
+                    if df is not None:
+                        st.caption(f"✓ {f.name} ({len(df)} rows, {len(df.columns)} cols)")
                 except:
                     st.caption(f"✗ {f.name} (Unable to read)")
         
         with col2:
             st.markdown("**Report Files:**")
             
+            data_dir = Path(__file__).parent
             report_files = list(data_dir.glob("*.md")) + list(data_dir.glob("*.txt"))
             for f in report_files:
                 size_kb = f.stat().st_size / 1024
