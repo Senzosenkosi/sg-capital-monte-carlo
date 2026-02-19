@@ -1,6 +1,6 @@
 """
-SG CAPITAL MONTE CARLO SIMULATION UI
-====================================
+RISK MINDS CALC MONTE CARLO SIMULATION UI
+==========================================
 Web interface for Monte Carlo simulations, percentile analysis, and factor risk decomposition.
 
 Run with: streamlit run app.py
@@ -53,7 +53,7 @@ def load_markdown_file(filename):
 
 # Set page config
 st.set_page_config(
-    page_title="SG Capital - Monte Carlo Analyzer",
+    page_title="Risk Minds Calc - Monte Carlo Analyzer",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -100,7 +100,7 @@ if 'latest_simulation' not in st.session_state:
 
 # Sidebar navigation
 with st.sidebar:
-    st.title("📊 SG Capital")
+    st.title("📊 Risk Minds Calc")
     st.markdown("---")
     
     page = st.radio(
@@ -138,7 +138,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### About")
     st.caption("Monte Carlo Simulation & Analysis Platform for Equity Research")
-    st.caption("SG Capital 2026")
+    st.caption("Risk Minds Calc 2026")
 
 
 # Main content
@@ -607,7 +607,7 @@ elif page == "Data Management":
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666; font-size: 0.9rem;'>
-    <p>SG Capital Monte Carlo Analysis Platform | 2026</p>
+    <p>Risk Minds Calc Monte Carlo Analysis Platform | 2026</p>
     <p>For educational and analytical purposes. Not financial advice.</p>
 </div>
 """, unsafe_allow_html=True)

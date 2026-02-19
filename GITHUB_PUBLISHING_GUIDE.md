@@ -334,7 +334,7 @@ style: format code with PEP 8
 Want a project website? Create `docs/index.md`:
 
 ```markdown
-# SG Capital Monte Carlo Platform
+# Risk Minds Calc Monte Carlo Platform
 
 [Visit Repository](https://github.com/yourusername/your-repo-name)
 

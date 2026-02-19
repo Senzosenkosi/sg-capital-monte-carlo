@@ -9,7 +9,7 @@ Version: 1.0
 
 WHAT WAS BUILT
 
-A complete, production-ready web interface (UI) for your SG Capital Monte 
+A complete, production-ready web interface (UI) for your Risk Minds Calc Monte 
 Carlo equity research and analysis platform.
 
 Your existing analysis engines (Monte Carlo simulation, percentile reports, 
@@ -526,7 +526,7 @@ What you do next:
 
 FINAL WORD
 
-Your SG Capital Monte Carlo Analysis Platform now has a beautiful, 
+Your Risk Minds Calc Monte Carlo Analysis Platform now has a beautiful, 
 powerful, professional web interface. 
 
 Everything needed to get started is included:
@@ -546,7 +546,7 @@ Happy analyzing! 🎉
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Project:        SG Capital Monte Carlo Analysis Platform
+Project:        Risk Minds Calc Monte Carlo Analysis Platform
 Component:      Web UI (Streamlit)
 Version:        1.0
 Date:           February 18, 2026

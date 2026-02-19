@@ -120,7 +120,7 @@ class AnalysisIntegration:
             
             # Default portfolio config
             portfolio_config = {
-                'name': 'SG Capital Portfolio',
+                'name': 'Risk Minds Calc Portfolio',
                 'total_value': 726500,
                 'stocks': []
             }

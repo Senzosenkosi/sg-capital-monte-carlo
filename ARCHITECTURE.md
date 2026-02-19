@@ -1,4 +1,4 @@
-# SG Capital UI Architecture
+# Risk Minds Calc UI Architecture
 
 ## System Overview
 

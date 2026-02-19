@@ -1,4 +1,4 @@
-# SG Capital Monte Carlo Analysis Platform - UI Guide
+# Risk Minds Calc Monte Carlo Analysis Platform - UI Guide
 
 ## 🚀 Quick Start
 
@@ -243,7 +243,7 @@ A: No. This is an analytical tool for educational purposes only.
 
 ## 📄 License
 
-SG Capital 2026 | Monte Carlo Analysis Platform
+Risk Minds Calc 2026 | Monte Carlo Analysis Platform
 For educational and analytical purposes only.
 
 ---

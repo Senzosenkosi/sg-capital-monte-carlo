@@ -1,4 +1,4 @@
-# 🎉 SG Capital UI - Executive Summary
+# 🎉 Risk Minds Calc UI - Executive Summary
 
 ## What Was Built
 
@@ -470,7 +470,7 @@ streamlit run app.py
 
 ---
 
-**Project:** SG Capital Monte Carlo Analysis UI  
+**Project:** Risk Minds Calc Monte Carlo Analysis UI  
 **Status:** ✅ COMPLETE  
 **Version:** 1.0  
 **Date:** February 18, 2026  

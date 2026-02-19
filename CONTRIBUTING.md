@@ -1,4 +1,4 @@
-# Contributing to SG Capital Monte Carlo Platform
+# Contributing to Risk Minds Calc Monte Carlo Platform
 
 Thank you for your interest in contributing! This document provides guidelines for contributing to the project.
 
@@ -305,9 +305,9 @@ Monte_Carlo_Simulations/
 
 ## Acknowledgments
 
-Contributors are the backbone of this project. Thank you for helping improve SG Capital!
+Contributors are the backbone of this project. Thank you for helping improve Risk Minds Calc!
 
 ---
 
 **Last Updated**: February 18, 2026
-**Maintained By**: SG Capital Team
+**Maintained By**: Risk Minds Calc Team
