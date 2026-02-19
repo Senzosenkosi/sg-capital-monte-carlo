@@ -59,9 +59,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Enable optimizations
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 # Custom CSS
 st.markdown("""
 <style>
